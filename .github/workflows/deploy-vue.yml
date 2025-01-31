@@ -35,10 +35,9 @@ jobs:
       - name: set the ubuntu user as the owner of the /var/www/html directory for unbuntu 24+
           uses: appleboy/ssh-action@v1.2.0
           with:
+            host: $ { { secrets. HOST } }
+            username: $ { { secrets. SSH USER_NAME } }
+            key: ${ { secrets. SSH KEY } }
 
-          host: $ { { secrets. HOST } }
-          username: $ { { secrets. SSH USER_NAME } }
-          key: ${ { secrets. SSH KEY } }
-
-          script: I
-          sudo chown -R ubuntu /var/www/html
+            script: I
+              sudo chown -R ubuntu /var/www/html
